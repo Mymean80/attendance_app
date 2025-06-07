@@ -1,0 +1,61 @@
+# PHP Upload Settings
+php_value upload_max_filesize 8M
+php_value post_max_size 10M
+php_value max_execution_time 300
+php_value max_input_time 300
+
+# Security Settings
+Options -Indexes
+<FilesMatch "^\.ht">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Prevent viewing of .php source code
+<FilesMatch "(?i)\.php$">
+    Order Deny,Allow
+    Allow from all
+</FilesMatch>
+
+# Security Headers
+<IfModule mod_headers.c>
+    # Protect against XSS attacks
+    Header set X-XSS-Protection "1; mode=block"
+    
+    # Prevent MIME-type sniffing
+    Header set X-Content-Type-Options "nosniff"
+    
+    # Prevent clickjacking
+    Header set X-Frame-Options "SAMEORIGIN"
+    
+    # Enable Content Security Policy (CSP)
+    Header set Content-Security-Policy "default-src 'self'; script-src 'self' https://cdn.jsdelivr.net https://code.jquery.com https://cdnjs.cloudflare.com 'unsafe-inline'; style-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; img-src 'self' https://ui-avatars.com data:; connect-src 'self';"
+    
+    # Enable Referrer Policy
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+    
+    # Enable Feature Policy
+    Header set Permissions-Policy "geolocation=(), midi=(), camera=(), microphone=(), usb=(), payment=(), vr=(), magnetometer=(), gyroscope=(), accelerometer=(), ambient-light-sensor=(), autoplay=(), display-capture=(), document-domain=(), encrypted-media=(), fullscreen=(), screen-wake-lock=(), xr-spatial-tracking=()"
+</IfModule>
+
+# Disable directory browsing
+Options -Indexes
+
+# Protect .env files
+<FilesMatch "^\.env">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Protect sensitive files
+<FilesMatch "\.(json|lock|sql|sqlite|db)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Prevent access to uploads directory
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_URI} ^/uploads/.*\.(php|phtml|php3|php4|php5|php7|phps|cgi|pl|py|asp|aspx|jsp)$ [NC]
+    RewriteRule .* - [F,L]
+</IfModule> 

@@ -1,0 +1,577 @@
+/* 
+ * Main Stylesheet for Attendance System
+ * Aplikasi Pencatatan Absensi Karyawan
+ */
+
+/* Variables */
+:root {
+    --primary-color: #4e73df;
+    --primary-color-dark: #2e59d9;
+    --secondary-color: #1cc88a;
+    --danger-color: #e74a3b;
+    --warning-color: #f6c23e;
+    --dark-color: #5a5c69;
+    --light-color: #f8f9fc;
+    --border-color: #e3e6f0;
+}
+
+/* General Styles */
+body {
+    font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background-color: var(--light-color);
+    color: #444;
+}
+
+a {
+    text-decoration: none;
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+/* Login Page */
+.login-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Animated background for login page - updated with more dynamic animation */
+.login-container:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -2;
+    background: linear-gradient(135deg, 
+        #4e73df 0%, 
+        #224abe 25%, 
+        #1a3a97 50%, 
+        #2e59d9 75%, 
+        #4e73df 100%);
+    background-size: 400% 400%;
+    animation: gradient-shift 15s ease infinite;
+}
+
+/* Abstract floating elements */
+.login-container:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background: 
+        radial-gradient(circle at 15% 15%, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.05) 20%, transparent 30%),
+        radial-gradient(circle at 85% 25%, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 25%, transparent 35%),
+        radial-gradient(circle at 75% 85%, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.1) 10%, transparent 20%),
+        radial-gradient(circle at 25% 75%, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.1) 15%, transparent 25%),
+        radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1) 0%, transparent 50%);
+    opacity: 0.8;
+    animation: pulse 8s ease-in-out infinite alternate;
+}
+
+/* Add more dynamic floating shapes */
+@keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.5;
+        transform: scale(1) rotate(0deg);
+    }
+    50% {
+        opacity: 0.7;
+        transform: scale(1.05) rotate(1deg);
+    }
+    100% {
+        opacity: 0.5;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+/* Dynamic floating shapes */
+.login-container .shape {
+    position: absolute;
+    z-index: -1;
+    filter: blur(5px);
+}
+
+.login-container .shape:nth-child(1) {
+    width: 120px;
+    height: 120px;
+    left: 10%;
+    top: 20%;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    animation: morph1 8s ease-in-out infinite both alternate, float 15s ease-in-out infinite;
+}
+
+.login-container .shape:nth-child(2) {
+    width: 150px;
+    height: 150px;
+    right: 15%;
+    top: 15%;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    animation: morph2 10s ease-in-out infinite both alternate, float 20s ease-in-out infinite 2s;
+}
+
+.login-container .shape:nth-child(3) {
+    width: 180px;
+    height: 180px;
+    left: 25%;
+    bottom: 20%;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 50% 60% 50% 70% / 50% 60% 40% 60%;
+    animation: morph3 12s ease-in-out infinite both alternate, float 25s ease-in-out infinite 1s;
+}
+
+.login-container .shape:nth-child(4) {
+    width: 100px;
+    height: 100px;
+    right: 20%;
+    bottom: 25%;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 30% 50% 60% 40% / 40% 60% 50% 60%;
+    animation: morph4 9s ease-in-out infinite both alternate, float 18s ease-in-out infinite 3s;
+}
+
+.login-container .shape:nth-child(5) {
+    width: 80px;
+    height: 80px;
+    left: 40%;
+    top: 30%;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 60% 40% 50% 70% / 50% 60% 40% 50%;
+    animation: morph5 11s ease-in-out infinite both alternate, float 22s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0) translateX(0) rotate(0deg); }
+    25% { transform: translateY(-20px) translateX(10px) rotate(5deg); }
+    50% { transform: translateY(10px) translateX(-15px) rotate(-5deg); }
+    75% { transform: translateY(-15px) translateX(5px) rotate(3deg); }
+    100% { transform: translateY(0) translateX(0) rotate(0deg); }
+}
+
+@keyframes morph1 {
+    0% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+    50% { border-radius: 60% 40% 50% 60% / 50% 60% 40% 50%; }
+    100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+}
+
+@keyframes morph2 {
+    0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+    50% { border-radius: 40% 60% 70% 30% / 40% 70% 30% 60%; }
+    100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+}
+
+@keyframes morph3 {
+    0% { border-radius: 50% 60% 50% 70% / 50% 60% 40% 60%; }
+    50% { border-radius: 70% 40% 60% 50% / 60% 50% 70% 40%; }
+    100% { border-radius: 50% 60% 50% 70% / 50% 60% 40% 60%; }
+}
+
+@keyframes morph4 {
+    0% { border-radius: 30% 50% 60% 40% / 40% 60% 50% 60%; }
+    50% { border-radius: 50% 60% 40% 50% / 60% 40% 60% 50%; }
+    100% { border-radius: 30% 50% 60% 40% / 40% 60% 50% 60%; }
+}
+
+@keyframes morph5 {
+    0% { border-radius: 60% 40% 50% 70% / 50% 60% 40% 50%; }
+    50% { border-radius: 50% 70% 40% 60% / 60% 50% 70% 40%; }
+    100% { border-radius: 60% 40% 50% 70% / 50% 60% 40% 50%; }
+}
+
+@keyframes animate-patterns {
+    0% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.1) rotate(2deg); }
+    100% { transform: scale(1) rotate(0deg); }
+}
+
+.login-card {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+    backdrop-filter: blur(5px);
+    background-color: rgba(255,255,255,0.9);
+}
+
+.login-header {
+    padding: 1.5rem;
+    text-align: center;
+    background-color: white;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.login-body {
+    padding: 2rem;
+    background-color: white;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+}
+
+.login-logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.login-title {
+    font-size: 1.2rem;
+    margin-bottom: 0;
+    color: var(--dark-color);
+}
+
+/* Sidebar */
+.sidebar {
+    min-height: 100vh;
+    background-color: var(--primary-color);
+    box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+    z-index: 1;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 250px;
+    transition: all 0.3s;
+}
+
+.sidebar-brand {
+    background-color: var(--primary-color-dark);
+    padding: 1.5rem 1rem;
+    text-align: center;
+}
+
+.sidebar-brand a {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.sidebar-menu {
+    padding: 1rem 0;
+}
+
+.sidebar-heading {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.8rem;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    text-transform: uppercase;
+}
+
+.sidebar-item {
+    padding: 0.5rem 1rem;
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    border-radius: 0.25rem;
+    transition: all 0.2s;
+}
+
+.sidebar-link i {
+    margin-right: 0.5rem;
+}
+
+.sidebar-link:hover, .sidebar-link.active {
+    background-color: var(--primary-color-dark);
+    color: white;
+}
+
+/* Content */
+.content {
+    margin-left: 250px;
+    padding: 1.5rem;
+    min-height: 100vh;
+}
+
+.content-collapsed {
+    margin-left: 0;
+}
+
+/* Navbar */
+.topbar {
+    height: 4.5rem;
+    background-color: white;
+    box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.navbar-nav {
+    display: flex;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-link {
+    color: var(--dark-color);
+    padding: 0.5rem 1rem;
+    display: block;
+}
+
+.topbar-divider {
+    width: 0;
+    border-right: 1px solid var(--border-color);
+    height: calc(4.5rem - 2rem);
+    margin: auto 1rem;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-name {
+    color: var(--dark-color);
+    font-weight: 600;
+    margin-right: 0.5rem;
+}
+
+/* Cards */
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid var(--border-color);
+    border-radius: 0.35rem;
+    box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+    margin-bottom: 1.5rem;
+}
+
+.card-header {
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: #f8f9fc;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-header:first-child {
+    border-radius: calc(0.35rem - 1px) calc(0.35rem - 1px) 0 0;
+}
+
+.card-body {
+    flex: 1 1 auto;
+    padding: 1.25rem;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-color-dark);
+    border-color: var(--primary-color-dark);
+}
+
+.btn-success {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+.btn-danger {
+    background-color: var(--danger-color);
+    border-color: var(--danger-color);
+}
+
+.btn-warning {
+    background-color: var(--warning-color);
+    border-color: var(--warning-color);
+}
+
+/* Dashboard Stats */
+.stat-card {
+    border-left: 0.25rem solid;
+    border-radius: 0.35rem;
+    box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+    margin-bottom: 1.5rem;
+}
+
+.stat-card-primary {
+    border-left-color: var(--primary-color);
+}
+
+.stat-card-success {
+    border-left-color: var(--secondary-color);
+}
+
+.stat-card-warning {
+    border-left-color: var(--warning-color);
+}
+
+.stat-card-danger {
+    border-left-color: var(--danger-color);
+}
+
+.stat-card-body {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stat-card-icon {
+    font-size: 2rem;
+    color: #dddfeb;
+}
+
+.stat-card-text {
+    color: var(--primary-color);
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 0.8rem;
+    margin-bottom: 0.25rem;
+}
+
+.stat-card-number {
+    color: var(--dark-color);
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin-bottom: 0;
+}
+
+/* Attendance Clock */
+.attendance-clock {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.current-time {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.current-date {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.attendance-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+/* Forms */
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #6e707e;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #d1d3e2;
+    border-radius: 0.35rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control:focus {
+    color: #6e707e;
+    background-color: #fff;
+    border-color: var(--primary-color);
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(78, 115, 223, 0.25);
+}
+
+/* Tables */
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #858796;
+    border-collapse: collapse;
+    table-layout: auto;
+}
+
+.table th,
+.table td {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid #e3e6f0;
+    word-break: break-word;
+}
+
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #e3e6f0;
+    background-color: #f8f9fc;
+}
+
+.table tbody + tbody {
+    border-top: 2px solid #e3e6f0;
+}
+
+/* Fix for table overflow issues */
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    max-width: 100%;
+    margin-bottom: 1rem;
+}
+
+/* Ensure the DataTables container doesn't overflow */
+div.dataTables_wrapper {
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 0;
+    }
+    
+    .content {
+        margin-left: 0;
+    }
+    
+    .sidebar.toggled {
+        width: 250px;
+    }
+    
+    .content.toggled {
+        margin-left: 250px;
+    }
+} 
