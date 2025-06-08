@@ -15,7 +15,7 @@ require_once 'database.php';
  * @return array|bool User data array or false if invalid
  */
 function validateLogin($email, $password) {
-    global $conn;
+    global $conn; //connection to database
     
     // Use prepared statement to prevent SQL injection
     $sql = "SELECT * FROM employees WHERE email = ?";
@@ -25,7 +25,7 @@ function validateLogin($email, $password) {
     $result = mysqli_stmt_get_result($stmt);
     
     if (mysqli_num_rows($result) == 1) {
-        $user = mysqli_fetch_assoc($result);
+        $user = mysqli_fetch_assoc($result); //value of the user query
         
         if (password_verify($password, $user['password'])) {
             return $user;
@@ -101,6 +101,7 @@ function recordAttendance($employee_id, $type) {
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
     
+    //function below is to output the error message if the database connection is not successful
     if (!$result) {
         error_log("Database error: " . mysqli_error($conn));
         return false;
@@ -126,6 +127,8 @@ function recordAttendance($employee_id, $type) {
             $late_minutes = $is_late ? calculateLateMinutes($time, $start_time) : 0;
             
             $status = $is_late ? 'late' : 'on-time';
+
+            
             
             // Use prepared statement for insert
             $sql = "INSERT INTO attendance (employee_id, date, time_in, status, late_minutes) 

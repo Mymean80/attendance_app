@@ -197,277 +197,281 @@ $shift_assignments = getEmployeeShiftSchedule($filter_from, $filter_to, $filter_
     </style>
 </head>
 <body>
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <div class="sidebar-brand">
-            <a href="dashboard.php">
-                <img src="../assets/images/clokin-removebg-preview.png" alt="Clokin Logo" class="img-fluid" style="width: 100%;">
-            </a>
-        </div>
-        
-        <div class="sidebar-menu">
-            <div class="sidebar-heading">Menu</div>
-            
-            <div class="sidebar-item">
-                <a href="dashboard.php" class="sidebar-link">
-                    <i class="fas fa-tachometer-alt"></i>
-                    <span>Dashboard</span>
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-brand">
+                <a href="dashboard.php">
+                    <img src="../assets/images/clokin-removebg-preview.png" alt="Clokin Logo" class="img-fluid" style="width: 100%;">
                 </a>
             </div>
             
-            <div class="sidebar-item">
-                <a href="record_attendance.php" class="sidebar-link">
-                    <i class="fas fa-clock"></i>
-                    <span>Catat Absensi</span>
-                </a>
-            </div>
-            
-            <div class="sidebar-item">
-                <a href="view_attendance.php" class="sidebar-link">
-                    <i class="fas fa-calendar-check"></i>
-                    <span>Lihat Absensi</span>
-                </a>
-            </div>
-            
-            <?php if (canApproveLeave()): ?>
-            <div class="sidebar-item">
-                <a href="leave_approval.php" class="sidebar-link">
-                    <i class="fas fa-calendar-times"></i>
-                    <span>Persetujuan Cuti</span>
-                </a>
-            </div>
-            <?php endif; ?>
-            
-            <div class="sidebar-item">
-                <a href="request_leave.php" class="sidebar-link">
-                    <i class="fas fa-calendar-minus"></i>
-                    <span>Ajukan Cuti</span>
-                </a>
-            </div>
-            
-            <?php if (isAdmin()): ?>
-            <div class="sidebar-heading">Admin</div>
-            
-            <div class="sidebar-item">
-                <a href="manage_employees.php" class="sidebar-link">
-                    <i class="fas fa-users"></i>
-                    <span>Kelola Karyawan</span>
-                </a>
-            </div>
-            
-            <div class="sidebar-item">
-                <a href="manage_shifts.php" class="sidebar-link active">
-                    <i class="fas fa-user-clock"></i>
-                    <span>Kelola Shift</span>
-                </a>
-            </div>
-            
-            <div class="sidebar-item">
-                <a href="attendance_statistics.php" class="sidebar-link">
-                    <i class="fas fa-chart-bar"></i>
-                    <span>Statistik Absensi</span>
-                </a>
-            </div>
-            <?php endif; ?>
-        </div>
-    </div>
-    
-    <!-- Main Content -->
-    <div class="main-content">
-        <!-- Navbar -->
-        <div class="navbar-container">
-            <nav class="navbar navbar-expand-lg navbar-light bg-white">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+            <div class="sidebar-menu">
+                <div class="sidebar-heading">Menu</div>
                 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="https://via.placeholder.com/32x32" alt="Profile" class="rounded-circle me-2">
-                                <?php echo $name; ?>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Profil</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="../logout.php">Keluar</a></li>
-                            </ul>
-                        </li>
-                    </ul>
+                <div class="sidebar-item">
+                    <a href="dashboard.php" class="sidebar-link">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
                 </div>
-            </nav>
+                
+                <div class="sidebar-item">
+                    <a href="record_attendance.php" class="sidebar-link">
+                        <i class="fas fa-clock"></i>
+                        <span>Catat Absensi</span>
+                    </a>
+                </div>
+                
+                <div class="sidebar-item">
+                    <a href="view_attendance.php" class="sidebar-link">
+                        <i class="fas fa-calendar-check"></i>
+                        <span>Lihat Absensi</span>
+                    </a>
+                </div>
+                
+                <?php if (canApproveLeave()): ?>
+                <div class="sidebar-item">
+                    <a href="leave_approval.php" class="sidebar-link">
+                        <i class="fas fa-calendar-times"></i>
+                        <span>Persetujuan Cuti</span>
+                    </a>
+                </div>
+                <?php endif; ?>
+                
+                <div class="sidebar-item">
+                    <a href="request_leave.php" class="sidebar-link">
+                        <i class="fas fa-calendar-minus"></i>
+                        <span>Ajukan Cuti</span>
+                    </a>
+                </div>
+                
+                <?php if (isAdmin()): ?>
+                <div class="sidebar-heading">Admin</div>
+                
+                <div class="sidebar-item">
+                    <a href="manage_employees.php" class="sidebar-link">
+                        <i class="fas fa-users"></i>
+                        <span>Kelola Karyawan</span>
+                    </a>
+                </div>
+                
+                <div class="sidebar-item">
+                    <a href="manage_shifts.php" class="sidebar-link active">
+                        <i class="fas fa-user-clock"></i>
+                        <span>Kelola Shift</span>
+                    </a>
+                </div>
+                
+                <div class="sidebar-item">
+                    <a href="attendance_statistics.php" class="sidebar-link">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Statistik Absensi</span>
+                    </a>
+                </div>
+                <?php endif; ?>
+            </div>
         </div>
         
-        <!-- Page Content -->
-        <div class="container-fluid px-2 px-md-4">
-            <div class="row mb-4">
-                <div class="col-md-12">
-                    <div class="d-sm-flex align-items-center justify-content-between mb-3">
-                        <h1 class="h3 mb-0 text-gray-800">Kelola Shift</h1>
-                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addShiftModal">
-                            <i class="fas fa-plus-circle"></i> Tambah Shift Baru
+        <!-- Main Content -->
+        <div class="main-content-wrapper">
+            <div class="main-content">
+                <!-- Navbar -->
+                <div class="navbar-container">
+                    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
                         </button>
+                        
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ms-auto">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <img src="https://via.placeholder.com/32x32" alt="Profile" class="rounded-circle me-2">
+                                        <?php echo $name; ?>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item" href="#">Profil</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item" href="../logout.php">Keluar</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+                
+                <!-- Page Content -->
+                <div class="container-fluid px-2 px-md-4">
+                    <div class="row mb-4">
+                        <div class="col-md-12">
+                            <div class="d-sm-flex align-items-center justify-content-between mb-3">
+                                <h1 class="h3 mb-0 text-gray-800">Kelola Shift</h1>
+                                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addShiftModal">
+                                    <i class="fas fa-plus-circle"></i> Tambah Shift Baru
+                                </button>
+                            </div>
+                            
+                            <?php if($message): ?>
+                                <div class="alert alert-<?php echo $message_type; ?> alert-dismissible fade show" role="alert">
+                                    <?php echo $message; ?>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            <?php endif; ?>
+                        </div>
                     </div>
                     
-                    <?php if($message): ?>
-                        <div class="alert alert-<?php echo $message_type; ?> alert-dismissible fade show" role="alert">
-                            <?php echo $message; ?>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    <div class="row">
+                        <!-- Shift List -->
+                        <div class="col-md-6">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold">Daftar Shift</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered" id="shiftsTable" width="100%" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th>Nama Shift</th>
+                                                    <th>Waktu Mulai</th>
+                                                    <th>Waktu Selesai</th>
+                                                    <th>Aksi</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php foreach($shifts as $shift): ?>
+                                                    <tr>
+                                                        <td><?php echo $shift['name']; ?></td>
+                                                        <td><?php echo date('h:i A', strtotime($shift['start_time'])); ?></td>
+                                                        <td><?php echo date('h:i A', strtotime($shift['end_time'])); ?></td>
+                                                        <td>
+                                                            <a href="?edit=<?php echo $shift['id']; ?>" class="btn btn-sm btn-warning">
+                                                                <i class="fas fa-edit"></i>
+                                                            </a>
+                                                            <a href="?delete=<?php echo $shift['id']; ?>" 
+                                                               class="btn btn-sm btn-danger" 
+                                                               onclick="return confirm('Yakin ingin menghapus shift ini?');">
+                                                                <i class="fas fa-trash"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                <?php endforeach; ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    <?php endif; ?>
-                </div>
-            </div>
-            
-            <div class="row">
-                <!-- Shift List -->
-                <div class="col-md-6">
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                            <h6 class="m-0 font-weight-bold">Daftar Shift</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="shiftsTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>Nama Shift</th>
-                                            <th>Waktu Mulai</th>
-                                            <th>Waktu Selesai</th>
-                                            <th>Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php foreach($shifts as $shift): ?>
-                                            <tr>
-                                                <td><?php echo $shift['name']; ?></td>
-                                                <td><?php echo date('h:i A', strtotime($shift['start_time'])); ?></td>
-                                                <td><?php echo date('h:i A', strtotime($shift['end_time'])); ?></td>
-                                                <td>
-                                                    <a href="?edit=<?php echo $shift['id']; ?>" class="btn btn-sm btn-warning">
-                                                        <i class="fas fa-edit"></i>
-                                                    </a>
-                                                    <a href="?delete=<?php echo $shift['id']; ?>" 
-                                                       class="btn btn-sm btn-danger" 
-                                                       onclick="return confirm('Yakin ingin menghapus shift ini?');">
-                                                        <i class="fas fa-trash"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        <?php endforeach; ?>
-                                    </tbody>
-                                </table>
+                        
+                        <!-- Assign Shift -->
+                        <div class="col-md-6">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold">Tugaskan Shift ke Karyawan</h6>
+                                </div>
+                                <div class="card-body">
+                                    <form method="post" action="">
+                                        <div class="mb-3">
+                                            <label for="employee_id" class="form-label">Karyawan</label>
+                                            <select class="form-select" id="employee_id" name="employee_id" required>
+                                                <option value="">-- Pilih Karyawan --</option>
+                                                <?php foreach($employees as $employee): ?>
+                                                    <option value="<?php echo $employee['id']; ?>">
+                                                        <?php echo $employee['name']; ?> (<?php echo $employee['employee_id']; ?>)
+                                                    </option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <label for="shift_id" class="form-label">Shift</label>
+                                            <select class="form-select" id="shift_id" name="shift_id" required>
+                                                <option value="">-- Pilih Shift --</option>
+                                                <?php foreach($shifts as $shift): ?>
+                                                    <option value="<?php echo $shift['id']; ?>">
+                                                        <?php echo $shift['name']; ?> (<?php echo date('h:i A', strtotime($shift['start_time'])); ?> - <?php echo date('h:i A', strtotime($shift['end_time'])); ?>)
+                                                    </option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <label for="assigned_date" class="form-label">Tanggal</label>
+                                            <input type="date" class="form-control" id="assigned_date" name="assigned_date" required min="<?php echo date('Y-m-d'); ?>">
+                                        </div>
+                                        
+                                        <button type="submit" name="assign_shift" class="btn btn-primary">Tugaskan Shift</button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                
-                <!-- Assign Shift -->
-                <div class="col-md-6">
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                            <h6 class="m-0 font-weight-bold">Tugaskan Shift ke Karyawan</h6>
-                        </div>
-                        <div class="card-body">
-                            <form method="post" action="">
-                                <div class="mb-3">
-                                    <label for="employee_id" class="form-label">Karyawan</label>
-                                    <select class="form-select" id="employee_id" name="employee_id" required>
-                                        <option value="">-- Pilih Karyawan --</option>
-                                        <?php foreach($employees as $employee): ?>
-                                            <option value="<?php echo $employee['id']; ?>">
-                                                <?php echo $employee['name']; ?> (<?php echo $employee['employee_id']; ?>)
-                                            </option>
-                                        <?php endforeach; ?>
-                                    </select>
+                    
+                    <!-- Shift Assignments -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold">Jadwal Shift Karyawan</h6>
                                 </div>
-                                
-                                <div class="mb-3">
-                                    <label for="shift_id" class="form-label">Shift</label>
-                                    <select class="form-select" id="shift_id" name="shift_id" required>
-                                        <option value="">-- Pilih Shift --</option>
-                                        <?php foreach($shifts as $shift): ?>
-                                            <option value="<?php echo $shift['id']; ?>">
-                                                <?php echo $shift['name']; ?> (<?php echo date('h:i A', strtotime($shift['start_time'])); ?> - <?php echo date('h:i A', strtotime($shift['end_time'])); ?>)
-                                            </option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                </div>
-                                
-                                <div class="mb-3">
-                                    <label for="assigned_date" class="form-label">Tanggal</label>
-                                    <input type="date" class="form-control" id="assigned_date" name="assigned_date" required min="<?php echo date('Y-m-d'); ?>">
-                                </div>
-                                
-                                <button type="submit" name="assign_shift" class="btn btn-primary">Tugaskan Shift</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Shift Assignments -->
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                            <h6 class="m-0 font-weight-bold">Jadwal Shift Karyawan</h6>
-                        </div>
-                        <div class="card-body">
-                            <!-- Filter Form -->
-                            <form method="get" action="" class="mb-4">
-                                <div class="row">
-                                    <div class="col-md-4 mb-3">
-                                        <label for="filter_employee" class="form-label">Karyawan</label>
-                                        <select class="form-select" id="filter_employee" name="filter_employee">
-                                            <option value="0">Semua Karyawan</option>
-                                            <?php foreach($employees as $employee): ?>
-                                                <option value="<?php echo $employee['id']; ?>" <?php echo ($filter_employee == $employee['id']) ? 'selected' : ''; ?>>
-                                                    <?php echo $employee['name']; ?> (<?php echo $employee['employee_id']; ?>)
-                                                </option>
-                                            <?php endforeach; ?>
-                                        </select>
-                                    </div>
+                                <div class="card-body">
+                                    <!-- Filter Form -->
+                                    <form method="get" action="" class="mb-4">
+                                        <div class="row">
+                                            <div class="col-md-4 mb-3">
+                                                <label for="filter_employee" class="form-label">Karyawan</label>
+                                                <select class="form-select" id="filter_employee" name="filter_employee">
+                                                    <option value="0">Semua Karyawan</option>
+                                                    <?php foreach($employees as $employee): ?>
+                                                        <option value="<?php echo $employee['id']; ?>" <?php echo ($filter_employee == $employee['id']) ? 'selected' : ''; ?>>
+                                                            <?php echo $employee['name']; ?> (<?php echo $employee['employee_id']; ?>)
+                                                        </option>
+                                                    <?php endforeach; ?>
+                                                </select>
+                                            </div>
+                                            
+                                            <div class="col-md-3 mb-3">
+                                                <label for="filter_from" class="form-label">Dari Tanggal</label>
+                                                <input type="date" class="form-control" id="filter_from" name="filter_from" value="<?php echo $filter_from; ?>">
+                                            </div>
+                                            
+                                            <div class="col-md-3 mb-3">
+                                                <label for="filter_to" class="form-label">Sampai Tanggal</label>
+                                                <input type="date" class="form-control" id="filter_to" name="filter_to" value="<?php echo $filter_to; ?>">
+                                            </div>
+                                            
+                                            <div class="col-md-2 mb-3 d-flex align-items-end">
+                                                <button type="submit" class="btn btn-primary w-100">Filter</button>
+                                            </div>
+                                        </div>
+                                    </form>
                                     
-                                    <div class="col-md-3 mb-3">
-                                        <label for="filter_from" class="form-label">Dari Tanggal</label>
-                                        <input type="date" class="form-control" id="filter_from" name="filter_from" value="<?php echo $filter_from; ?>">
-                                    </div>
-                                    
-                                    <div class="col-md-3 mb-3">
-                                        <label for="filter_to" class="form-label">Sampai Tanggal</label>
-                                        <input type="date" class="form-control" id="filter_to" name="filter_to" value="<?php echo $filter_to; ?>">
-                                    </div>
-                                    
-                                    <div class="col-md-2 mb-3 d-flex align-items-end">
-                                        <button type="submit" class="btn btn-primary w-100">Filter</button>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered" id="assignmentsTable" width="100%" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th>Karyawan</th>
+                                                    <th>Tanggal</th>
+                                                    <th>Shift</th>
+                                                    <th>Waktu Mulai</th>
+                                                    <th>Waktu Selesai</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php foreach($shift_assignments as $assignment): ?>
+                                                    <tr>
+                                                        <td><?php echo $assignment['employee_name']; ?></td>
+                                                        <td><?php echo date('d-m-Y', strtotime($assignment['assigned_date'])); ?></td>
+                                                        <td><?php echo $assignment['shift_name']; ?></td>
+                                                        <td><?php echo date('h:i A', strtotime($assignment['start_time'])); ?></td>
+                                                        <td><?php echo date('h:i A', strtotime($assignment['end_time'])); ?></td>
+                                                    </tr>
+                                                <?php endforeach; ?>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
-                            </form>
-                            
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="assignmentsTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>Karyawan</th>
-                                            <th>Tanggal</th>
-                                            <th>Shift</th>
-                                            <th>Waktu Mulai</th>
-                                            <th>Waktu Selesai</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php foreach($shift_assignments as $assignment): ?>
-                                            <tr>
-                                                <td><?php echo $assignment['employee_name']; ?></td>
-                                                <td><?php echo date('d-m-Y', strtotime($assignment['assigned_date'])); ?></td>
-                                                <td><?php echo $assignment['shift_name']; ?></td>
-                                                <td><?php echo date('h:i A', strtotime($assignment['start_time'])); ?></td>
-                                                <td><?php echo date('h:i A', strtotime($assignment['end_time'])); ?></td>
-                                            </tr>
-                                        <?php endforeach; ?>
-                                    </tbody>
-                                </table>
                             </div>
                         </div>
                     </div>
@@ -475,7 +479,7 @@ $shift_assignments = getEmployeeShiftSchedule($filter_from, $filter_to, $filter_
             </div>
         </div>
     </div>
-    
+
     <!-- Add Shift Modal -->
     <div class="modal fade" id="addShiftModal" tabindex="-1" aria-labelledby="addShiftModalLabel" aria-hidden="true">
         <div class="modal-dialog">
